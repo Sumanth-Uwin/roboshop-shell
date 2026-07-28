@@ -22,13 +22,13 @@ fi
 
 VALIDATE(){
     if [ $2 -ne 0 ]; then
-        echo -e "$TIMESTAMP [ERROR] $1 ... $R FAILURE $N" | tee -a $LOGS_FILE
+        echo -e "$Time [ERROR] $1 ... $R FAILURE $N" | tee -a $LOGS_FILE
         exit 1
     else
-        echo -e "$TIMESTAMP [INFO] $1 ... $G SUCCESS $N" | tee -a $LOGS_FILE
+        echo -e "$Time [INFO] $1 ... $G SUCCESS $N" | tee -a $LOGS_FILE
     fi
 }
-sed -i cp mongo.repo /etc/yum.repos.d/mongo.repo
+cp mongo.repo /etc/yum.repos.d/mongo.repo
 
 VALIDATE "MongoDB repo" $?
 dnf install mongodb-org -y &>> $LOGS_FILE
@@ -37,5 +37,5 @@ systemctl enable --now mongod
 VALIDATE "MongoDB service" $?
 sed -i 's/127.0.0.1/0.0.0.0/g' /etc/mongod.conf
 VALIDATE "MongoDB bind address" $?
-sytemctl restart mongod 
+systemctl restart mongod 
 VALIDATE "MongoDB restart" $?
