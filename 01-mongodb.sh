@@ -21,7 +21,7 @@ exit 1
 fi
 
 VALIDATE(){
-    if [ $1 -eq 0 ]; then
+    if [ $2 -eq 0 ]; then
             echo -e "$Time [INFO] $1 installed successfully" | tee -a $LOGS_FILE
         else
             echo -e "$Time [ERROR] Failed to install $1" | tee -a $LOGS_FILE
