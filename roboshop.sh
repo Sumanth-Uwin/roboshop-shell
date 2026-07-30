@@ -1,7 +1,7 @@
 #!bim/bash
-AMI_ID=0220d79f3f480ecf5
-ZONE_ID=Z05442233OGLRHJLYD0TU
-DOMAIN_NAME=sumanthpabba.online
+AMI_ID="0220d79f3f480ecf5"
+ZONE_ID="Z05442233OGLRHJLYD0TU"
+DOMAIN_NAME="sumanthpabba.online"
 
 for instance in $@
 do
