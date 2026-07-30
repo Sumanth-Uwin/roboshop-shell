@@ -5,15 +5,16 @@ DOMAIN_NAME="sumanthpabba.online"
 
 for instance in $@
 do
+    echo "Launching instance: $instance"
     INSTANCE_ID=$(aws ec2 run-instances \
         --image-id $AMI_ID \
         --instance-type t3.micro \
-        --security-groups "roboshop-common" ""roboshop-$instance\
-        --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value="roboshop-$instance"}]' \
+        --security-groups "roboshop-common" "roboshop-$instance"\
+        --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=roboshop-$instance}]" \
         --query 'Instances[0].InstanceId' \
         --output text
     )
-    echo "Instanse id : $instance - $INSTANCE_ID"
+    echo "Instanse id : $INSTANCE_ID"
 
     if [$instance -eq "frontend"]; then
         IP=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID \
