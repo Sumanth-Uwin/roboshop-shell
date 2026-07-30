@@ -16,7 +16,7 @@ do
     )
     echo "Instanse id : $INSTANCE_ID"
 
-    if [$instance -eq "frontend"]; then
+    if [ "$instance" == "frontend" ]; then
         IP=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID \
                 --query 'Reservations[*].Instances[*].PublicIpAddress' \
                 --output text
