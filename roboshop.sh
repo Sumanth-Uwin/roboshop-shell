@@ -1,4 +1,4 @@
-#!bim/bash
+#!/bin/bash
 AMI_ID="ami-0220d79f3f480ecf5"
 ZONE_ID="Z05442233OGLRHJLYD0TU"
 DOMAIN_NAME="sumanthpabba.online"
